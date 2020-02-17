@@ -1,12 +1,16 @@
 package Staff;
 
+import com.sun.istack.internal.NotNull;
+
 public abstract class Employee {
     public String name;
     public String niNumber;
     public int salary;
 
-
     public Employee(String name, String niNumber, int salary) {
+        if (name == null) this.name ="Please Enter Name";
+    }
+    {
         this.name = name;
         this.niNumber = niNumber;
         this.salary = salary;
@@ -22,7 +26,10 @@ public abstract class Employee {
     };
     
     public void raiseSalary (double raiseAmount) {
-         this.salary += raiseAmount;
+        if(raiseAmount < 0){
+            System.out.println("Cannot Decrease Pay");
+        }
+            else this.salary += raiseAmount;
     }
     
     public void payBonus() {

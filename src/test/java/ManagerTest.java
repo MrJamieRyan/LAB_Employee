@@ -15,6 +15,13 @@ public class ManagerTest {
     }
 
     @Test
+    public void nameCannotBeNull(){
+        this.manager  = new Manager(null, "BB1234567N", 30000,
+                "Finance");
+        assertEquals("Please Enter Name", manager.getName());
+    }
+// @NotNull a possibilty?
+    @Test
     public void canGetEmployeeName(){
         assertEquals("Bob", manager.getName());
     }
@@ -38,6 +45,12 @@ public class ManagerTest {
     public void canIncreaseSalary(){
         manager.raiseSalary( 10);
         assertEquals(30010, manager.getSalary());
+    }
+
+    @Test
+    public void cannotApplyNegativeNumbers(){
+        manager.raiseSalary( -10);
+        assertEquals(30000, manager.getSalary());
     }
 
     @Test
